@@ -16,9 +16,9 @@
 
 # 5.inline-block有什么特性？如何去除缝隙？高度不一样的inline-block元素如何顶端对齐?
 
-> inline-block是让元素既有inline属性，不占据一整行;又有block的属性,可以设置元素的高度宽度、内外边距。
-> 去除缝隙：给父元素加一条font-size: 0;给当前元素字体加默认大小。
-> 高度不一样的inline-block元素顶端对齐： vertical: top;
+> - inline-block是让元素既有inline属性，不占据一整行;又有block的属性,可以设置元素的高度宽度、内外边距。
+> - 去除缝隙：给父元素加一条font-size: 0;给当前元素字体加默认大小。
+> - 高度不一样的inline-block元素顶端对齐： vertical: top;
 
 # 6.CSS sprite 是什么?
 
