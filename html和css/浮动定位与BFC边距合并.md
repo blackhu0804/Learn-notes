@@ -133,7 +133,7 @@
        background-color: yellow;
  }
 ```
-
+![](https://github.com/hu970804/Blog/blob/master/html%E5%92%8Ccss/img/2.gif)
 - 外边距自己和自己合并
 如果一个元素没有边框和填充，但有上下外边距，这时它的上下外边距会合并。
 ```css
@@ -144,7 +144,7 @@
 <div id="d1">
 </div>
 ```
-
+![](https://github.com/hu970804/Blog/blob/master/html%E5%92%8Ccss/img/3.gif)
 - 元素垂直方向上的兄弟元素也有外边距，那么垂直方向的外边距依旧会发生合并。
 ```css
 #d1 {
@@ -162,7 +162,7 @@
 <div id="d1">
 </div>
 ```
-
+![](https://github.com/hu970804/Blog/blob/master/html%E5%92%8Ccss/img/4.gif)
 > 如何解决边距重叠:
 > - 给对应元素加上阻挡（例如border，非空内容，padding等）
 > - 利用 BFC会阻止垂直外边距折叠的特性，将对应元素转换为BFC来解决边距重叠。
