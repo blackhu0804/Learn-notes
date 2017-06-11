@@ -112,7 +112,7 @@
 <div id="d2">
 </div>
 ```
-
+![](https://github.com/hu970804/Blog/blob/master/html%E5%92%8Ccss/img/1.gif)
 - 当一个元素包含在另一个元素中时（假设没有内边距或边框把外边距分隔开），它们的上和/或下外边距也会发生合并。
 ```css
 <div class=”parent”>
