@@ -86,8 +86,83 @@
 > 清除浮动撑开父元素的高度
 
 ## 在什么场景下会出现外边距合并？如何合并？如何不让相邻元素外边距合并？父子外边距合并的范例
+
 > 外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距。
 合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。
 
+> 只有普通文档流中块框的垂直外边距才会发生外边距合并。行内框、浮动框或绝对定位之间的外边距不会合并
 
+- 两个兄弟元素在垂直方向上合并外边距，取较大值进行合并。
 
+```css
+#d1 {
+  width:100px;
+  height:100px;
+  margin-bottom:20px;
+}
+#d2 {
+  width:100px;
+  height:100px;
+  margin-top:10px;
+}
+
+<div id="d1">
+</div>
+
+<div id="d2">
+</div>
+```
+
+- 当一个元素包含在另一个元素中时（假设没有内边距或边框把外边距分隔开），它们的上和/或下外边距也会发生合并。
+```css
+<div class=”parent”>
+    <div class=”child”>
+    </div>
+</div>
+
+.parent{
+    width: 200px;
+    height: 100px;
+    margin-top:10px;
+    background-color: red;
+}
+.child{
+       width: 100px;
+       height: 100px;
+       margin-top:30px;
+       background-color: yellow;
+ }
+```
+
+- 外边距自己和自己合并
+如果一个元素没有边框和填充，但有上下外边距，这时它的上下外边距会合并。
+```css
+#d1 {
+  margin-top:20px;
+  margin-bottom:20px;
+}
+<div id="d1">
+</div>
+```
+
+- 元素垂直方向上的兄弟元素也有外边距，那么垂直方向的外边距依旧会发生合并。
+```css
+#d1 {
+  margin-top:50px;
+  margin-bottom:20px;
+}
+
+#d2 {
+  width:100px;
+  height:100px;
+  margin-bottom: 80px;
+}
+<div id="d2">
+</div>
+<div id="d1">
+</div>
+```
+
+> 如何解决边距重叠:
+> - 给对应元素加上阻挡（例如border，非空内容，padding等）
+> - 利用 BFC会阻止垂直外边距折叠的特性，将对应元素转换为BFC来解决边距重叠。
