@@ -63,6 +63,20 @@
     table tr td，在table加属性valign：middle；
 ## 布局（一栏、两栏、三栏）
 
+### 一栏
+-  [一栏布局](http://js.jirengu.com/qutut/21/edit?html,output)
+-  [float实现内联元素居中](http://js.jirengu.com/gane/2/edit)
+-  [flex实现内联元素居中](http://js.jirengu.com/gane/3/edit)
+
+### 两栏
+- [左右浮动](http://js.jirengu.com/huzad/1/edit)
+- [felx实现两栏布局](http://js.jirengu.com/peyip/1/edit)
+- [头像两栏布局](http://js.jirengu.com/peyip/4/edit)
+
+### 三栏
+- [三栏布局](http://js.jirengu.com/vosas/4/edit)
+- [flex实现三栏布局](http://js.jirengu.com/vosas/4/edit?html,output)
+
 IE：float
 非IE：flex
 
