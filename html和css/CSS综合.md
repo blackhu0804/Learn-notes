@@ -82,10 +82,12 @@
 
 ## CSS 垂直居中
 
-1. [设置padding](http://js.jirengu.com/tisil/1/edit)
+1. [设置padding](http://js.jirengu.com/tisil/4/edit)
 2. [绝对定位实现居中](http://js.jirengu.com/caka/2/edit)
 3. [vertical-align实现居中](http://js.jirengu.com/gojem/2/edit)
 4. [table-cell实现居中](http://js.jirengu.com/gojem/1/edit)
+5. [内联元素居中](http://js.jirengu.com/xekag/1/edit?html,css,output)
+6. [flex实现垂直居中](http://js.jirengu.com/ripet/1/edit?html,css,output)
 
 
 ## CSS伪类和伪元素
