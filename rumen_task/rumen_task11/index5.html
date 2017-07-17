@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .clearfix::after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .layout{
+            max-width: 960px;
+            min-width: 600px;
+            margin: 100px auto;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 20px;
+        }
+        .content{
+            margin-right: 300px;
+        }
+        .author{
+            font-size: 18px;
+        }
+        .author>img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            vertical-align: middle;
+            border: 2px solid #ddd;
+            margin-right: 15px;
+        }
+        .author .name{
+            margin-right: 5px;
+        }
+        .author .time{
+            color: #666;
+        }
+        .title .words{
+            overflow: hidden;
+            font-size: 18px;
+            line-height: 30px;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+        .btn{
+            padding: 3px 10px;
+            text-decoration: none;
+            color: #ea6f5a;
+            border: 2px solid #ea6f5a;
+            border-radius: 3px;
+            font-weight: bolder;
+        }
+        aside{
+            width: 260px;
+            float: right;
+        }
+        aside>img{
+            width: 100%;
+            border-radius: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="layout clearfix">
+        <aside>
+            <img src="http://upload-images.jianshu.io/upload_images/2992001-c274025a946b0b33.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/375/h/300" alt="">
+        </aside>
+        <div class="content">
+            <div class="author">
+                <img src="http://upload.jianshu.io/users/upload_avatars/2992001/b34f9e7f8414.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96" alt="">
+                <span class="name">李晓木</span>
+                <span class="time">8小时前</span>
+            </div>
+            
+        <div class="title">
+            <h2>胡歌：书读多了，自然百搭</h2>
+            <p class="words">前段时间很有幸参加了一场线下读书会，我注意到在会场有一位40岁左右的女人，纤细清瘦，妆容淡雅，梳着简单的发髻，穿着淡绿色丝质长裙，仅仅是站在那里翻书，我却感觉她是那样的与众不同，如同一幅水墨画，由内而外舒展着书香。﻿﻿</p>
+        </div>
+        <a href="#" class="btn">阅读</a>
+        </div>
+    </div>
+</body>
+</html>

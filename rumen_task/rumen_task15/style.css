@@ -1,0 +1,201 @@
+body{
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+ol,ul {
+    list-style: none;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+h1,h4{
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    margin: 0;
+}
+@font-face {
+  font-family: 'iconfont';  /* project id 356489 */
+  src: url('http://at.alicdn.com/t/font_9folwxapvsuu9pb9.eot');
+  src: url('http://at.alicdn.com/t/font_9folwxapvsuu9pb9.eot?#iefix') format('embedded-opentype'),
+  url('http://at.alicdn.com/t/font_9folwxapvsuu9pb9.woff') format('woff'),
+  url('http://at.alicdn.com/t/font_9folwxapvsuu9pb9.ttf') format('truetype'),
+  url('http://at.alicdn.com/t/font_9folwxapvsuu9pb9.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.ct {
+    max-width: 1170px;
+    min-width: 1000px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.navbar {
+    min-height: 50px;
+    margin-bottom: 20px;
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+.navbar .ct .logo-content{
+    color: #fed136;
+    float: left;
+    width: 300px;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 2em;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.navbar .ct .navbar-nav {
+    float: right;
+}
+.navbar .ct .navbar-nav>li{
+    float: left;
+}
+.navbar .ct .navbar-nav>li>a{
+    color: #fff;
+    font-size: 18px;
+    position: relative;
+    display: block;
+    padding: 15px 15px;
+}
+.navbar .ct .navbar-nav>li>a:hover{
+    color: #fed136;
+}
+header {
+    background-image: url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/header-bg.jpg);
+    background-size: cover;
+    background-attachment: scroll;
+    background-position: center center;
+}
+header .ct {
+    color: #fff;
+    text-align: center;
+}
+header .ct .intro-text {
+    padding: 300px 0 200px 0;
+}
+header .ct .intro-text > .intro-lead-in {
+    font-style: italic;
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 25px;
+}
+header .ct .intro-text > .intro-heading {
+    font-weight: 700;
+    font-size: 75px;
+    line-height: 75px;
+    margin-top: 50px;
+}
+header .ct .intro-text > .intro-btn {
+    display: inline-block;
+    color: #fff;
+    background-color: #fed136;
+    border-color: #fed136;
+    font-weight: 700;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 20px 40px;
+    text-decoration: none;
+}
+header .ct .intro-text > .intro-btn:hover {
+    background-color: #f3c31e;
+}
+#services {
+    padding: 150px 0;
+}
+#services .ct {
+    text-align: center;
+}
+#services .ct .content{
+    width: 33%;
+    float: left;
+    margin-top: 75px;
+}
+#services .ct .content>span {
+    font-size: 112px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #fed136;
+}
+#services .ct .content>h4{
+    font-weight: 700px;
+}
+#services .ct .content>p{
+    color: #777;
+    line-height: 1.75;
+}
+.timeline {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+.about>h1,.title>h1 {
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0;
+}
+.about .subtitle,#services .title .subtitle {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+}
+.timeline li {
+    text-align: center;
+    position: relative;
+    padding: 0 0 125px 0;
+}
+.timeline li::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 2px solid #f1f1f1;
+    height: 100%;
+    z-index: -1;
+}
+.timeline > li:last-child {
+    padding: 0;
+}
+.timeline img {
+    width: 156px;
+    border-radius: 50%;
+    border: 7px solid #f1f1f1;
+}
+.timeline li .summary h4 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+.timeline .summary {
+    position: absolute;
+    right: 50%;
+    top: 0;
+    margin-right: 95px;
+    width: 30em;
+    text-align: right;
+}
+.timeline > li:nth-child(even) > .summary {
+    left: 50%;
+    margin-left: 95px;
+    text-align: left;
+}

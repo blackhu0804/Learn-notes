@@ -1,0 +1,177 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 355378 */
+  src: url('//at.alicdn.com/t/font_4xde0ovhuyzumcxr.eot');
+  src: url('//at.alicdn.com/t/font_4xde0ovhuyzumcxr.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_4xde0ovhuyzumcxr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_4xde0ovhuyzumcxr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_4xde0ovhuyzumcxr.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-size: 14px/1.5 Arial; 
+    background-color:  #eee;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+#ct {
+    width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px 30px;
+}
+.personal-info .name-area{
+    width: 50%;
+    float: left;
+}
+.personal-info .contact{
+    width: 50%;
+    float: left;
+}
+
+.personal-info .avatar{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #111;
+    position: relative;
+    font-size: 30px;
+    float: left;
+}
+.personal-info .avatar span{
+    position: absolute;
+}
+.personal-info .avatar span:first-child {
+    top: 40px;
+    left: 40px;
+}
+.personal-info .avatar span:last-child {
+    bottom: 40px;
+    right: 40px;
+}
+.personal-info .avatar::before {
+    position: absolute;
+    top: 80px;
+    left: 40px;
+    content: '';
+    display: inline-block;
+    width: 80px;
+    border-top: 2px solid #fff;
+    transform: rotate(-30deg);
+}
+
+.personal-info .name-area>h2 {
+    font-size: 40px;
+    margin-left: 180px;
+    margin-top: 20px;
+}
+.personal-info .name-area>p {
+    font-size: 18px;
+    margin-left: 180px;
+}
+
+.personal-info .contact{
+    width: 50%;
+}
+.personal-info .contact h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+    border-bottom: 3px solid black;
+}
+
+.personal-info .contact p{
+    line-height: 1.8;
+}
+.experience {
+    margin-top: 50px;
+}
+.content::before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: black;
+    border-radius: 4px;
+    position: relative;
+    left: -65px;
+    top: 28px;
+}
+.experience div:first-of-type, .education div:first-of-type{
+    margin-top: 20px;
+}
+.experience .content{
+    padding: 0 0 30px 60px;
+    border-left: 2px solid black;
+}
+.education .content{
+    padding: 0 0 30px 60px;
+    border-left: 2px solid black;
+}
+.experience h3,.education h3,.footer h3{
+    display: inline-block;
+    width: 300px;
+    margin-top: 30px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #aaa;
+}
+.content span:first-child{
+    font-size: 20px;
+    line-height: 50px;
+}
+.content span:nth-child(2) {
+    color: #aaa;
+}
+.content p {
+    line-height: 1.8;
+}
+
+.footer .activites {
+    width: 50%;
+    float: left;
+}
+
+.footer .skills {
+    width: 50%;
+    float: left;
+}
+.footer .activites .vol {
+    padding-left: 60px;
+}
+.footer .activites .vol span:first-child {
+    margin-left: -60px;
+}
+.footer .activites .vol span:nth-child(2) {
+    display: inline-block;
+    font-size: 18px;
+    margin: 15px 40px;
+}
+.footer .activites p{
+    line-height: 1.8;
+}
+.footer .skills .ability {
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+    height: 200px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    margin-left: 20px;
+}
+.ability li{
+    margin-top: 40px;
+    display: list-item;
+}

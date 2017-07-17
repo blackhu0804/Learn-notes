@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .parent{
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid royalblue;
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+        }
+        .parent>span:first-child{
+            border-radius: 10px 0 0 10px;
+        }
+        .parent>span:last-child{
+            border-radius: 0 10px 10px 0;
+        }
+        span{
+            padding: 10px 20px; 
+            border: 1px solid green;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <span>新闻</span>
+        <span>地图</span>
+        <span>视频</span>
+        <span>登录</span>
+        <span>注册</span>
+    </div>
+</body>
+</html>

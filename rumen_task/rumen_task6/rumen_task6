@@ -1,0 +1,42 @@
+1、CSS全称：Cascading Style Sheets,层叠样式表
+三种格式：
+	@charset "utf-8"
+	选择器{属性：值}	   注释：/* */
+	伪类
+
+2、引用：
+	内联样式，无法写伪类
+	内部样式，写到<style></style>标签里面
+	外部样式：
+			<link rel="stylesheet" type="text/css" href="index.css"> 一般放到head里面
+			@import url(style.css);
+			@import style.css;放到style里；是CSS的语法
+			浏览器的默认样式
+
+3、文件路径：
+	相对路径：
+		css/a.css 当前路径下的css文件夹下的a.css
+		./css/a.css 相同
+		b.css 同级目录下的css
+		../imgs/a.css 上一级目录下的imgs文件夹下的a.css
+	绝对路径：
+		本地路径的绝对地址 F:\jirengu\rumen_task6\rumen_task6
+	网站路径：
+		使用相对路径
+
+4、css书写规范：
+	- 建议统一小写
+	- 不使用内联的style属性定义样式
+	- id和class使用有意义的单词，尽量使用-作为分隔符
+	- 属性值是0的省略单位
+	- 块内容缩进
+	- 属性名后面加一个空格
+
+5、tinypng.com图片压缩网站
+
+6、chrome开发调试：
+	审查元素
+		elements:dom元素
+		console：调试js
+		network：调ajax时用
+		resources：加载内容
