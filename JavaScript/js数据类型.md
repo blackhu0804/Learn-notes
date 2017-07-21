@@ -6,6 +6,7 @@
 - undefined：表示“未定义”或不存在，即此处目前没有任何值
 - null：表示空缺，即此处应该有一个值，但目前为空
 - 对象（object）：各种值组成的集合
+- symbol：ES6新加入的数据类型[参考链接](http://es6.ruanyifeng.com/#docs/symbol)
 
 ### typeof运算符
 
