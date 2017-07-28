@@ -178,7 +178,17 @@ Date.parse("2011-10-10T14:48:00")
 var today = new Date();
 today.toString(); 
 ```
-
+### 判断某一年是不是闰年
+```js
+	function leap(year){
+		var d = new Date(year,1,29)
+		if (d.getDate() === 29) {
+			console.log('是闰年')
+		} else {
+			console.log('不是')
+		}
+	}
+```
 ### 获取当前时间到指定日期的间隔时间
 ```js
 	function getChIntv(dateStr) {
