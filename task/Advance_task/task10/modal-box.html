@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .modal-dialog {
+            display: none;
+            position: fixed;
+        }
+        .modal-dialog .header {
+            padding: 3px 6px;
+            border-bottom: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+            position: relative;
+        }
+        .modal-dialog a{
+            text-decoration: none;
+            color: #333;
+        }
+        .modal-dialog .cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #000;
+            opacity: .4;
+        }
+        .modal-dialog .modal-ct {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 400px;
+            border-radius: 3px;
+            border: 1px solid #ccc;            
+            background-color: #fff;
+        }
+        .modal-ct .header h3{
+            padding-left: 10px;
+            display: inline-block;
+        }
+        .modal-ct .header .close {
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            font-size: 20px;
+        }
+        .modal-ct .content {
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .modal-ct .footer {
+            height: 30px;
+        }
+        .modal-ct .footer .btn{
+            float: right;
+            margin-right: 10px;
+            line-height: 30px;
+        }
+        .open {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn-group">
+        <button type="button" id="btn-modal">点我</button>
+    </div>
+
+    <div class="modal-dialog" id="modal-1">
+        <div class="cover"></div>
+        <div class="modal-ct">
+            <div class="header">
+                <h3>我是标题</h3>
+                <a href="#" class="close">x</a>
+            </div>
+            <div class="content">
+                <p>我是内容1</p>
+                <p>我是内容2</p>
+            </div>
+            <div class="footer">
+                <a href="#" class="btn btn-confirm">确定</a>
+                <a href="#" class="btn btn-cancel">取消</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var btn = document.querySelector('#btn-modal');
+        var modal = document.querySelector('#modal-1');
+        var modalCt =document.querySelector('.modal-dialog .modal-ct');
+        var close = document.querySelectorAll('#modal-1 .close,.footer .btn')
+
+        btn.addEventListener('click',function() {
+            modal.classList.add('open');
+        })
+
+        close.forEach(function(e) {
+            e.addEventListener('click',function() {
+                modal.classList.remove('open')
+            })
+        });
+
+        modal.addEventListener('click',function() {
+            modal.classList.remove('open')
+        })
+
+        modalCt.addEventListener('click',function(e){
+            e.stopPropagation();
+        })
+    </script>
+</body>
+</html>
