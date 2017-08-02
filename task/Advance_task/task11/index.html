@@ -8,15 +8,55 @@
 </head>
 <body>
 <script>
-    var fnArr = [];
-    for (var i = 0; i < 10; i ++) {
-        !function(i){
-           fnArr[i] = function(){
-               return i;
-           }
-        }(i)
+var Car = (function(){
+    var speed = 0;
+    function setSpeed(s){
+        speed = s
     }
-    console.log( fnArr[3]() );  //
+    
+    function getSpeed(){
+    	console.log(speed)
+    }
+
+    function accelerate(){
+    	return speed += 10
+    }
+
+    function decelerate(){
+    	if (speed > 0) {
+    		return speed -= 10
+    	}
+    }
+
+    function getStatus() {
+    	if (speed > 0 ) {
+    		console.log('running') 
+    	}else{
+    		console.log('stop')
+    	}
+    }
+
+    return {
+        setSpeed: setSpeed,
+        getSpeed: getSpeed,
+        accelerate: accelerate,
+        getStatus: getStatus,
+        decelerate: decelerate
+    }
+})()
+
+    Car.setSpeed(30);
+    Car.getSpeed(); //30
+    Car.accelerate();
+    Car.getSpeed(); //40;
+    Car.decelerate();
+    Car.decelerate();
+    Car.getSpeed(); //20
+    Car.getStatus(); // 'running';
+    Car.decelerate(); 
+    Car.decelerate();
+    Car.getStatus();  //'stop';
+    //Car.speed;  //error
 </script>
 </body>
 </html>
