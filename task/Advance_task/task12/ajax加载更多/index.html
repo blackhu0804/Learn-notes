@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #ct li{
+            list-style: none;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #load-more {
+            display: block;
+            margin: 10px auto;
+            cursor: pointer;
+        }
+        .btn{
+            height: 40px;
+            line-height: 40px;
+            width: 80px;
+            border: 1px solid #e27272;
+            border-radius: 3px;
+            text-align: center;
+            text-decoration: none;
+            color: #e27272;
+        }
+        .btn:hover {
+            background-color: greenyellow;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ct">
+
+    </ul>
+    <a class="btn" href="#" id="load-more">加载更多</a>
+
+
+    <script>
+        var ct = document.querySelector('#ct')
+        var btn = document.querySelector('#load-more')
+        var pageIndex = 0
+
+        var isDataArrive = true
+
+
+        btn.addEventListener('click',function(e){
+            e.preventDefault();//阻止a链接跳转到底部
+            
+            if(!isDataArrive){ //当网速慢时，数据还没有获取到，防止用户重复点击
+                return ;
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    if(xhr.status === 200 || xhr.status === 304){
+                        var result = JSON.parse(xhr.responseText)
+                        console.log(result);
+
+                        var fragment = document.createDocumentFragment()
+                        for(var i = 0;i < result.length;i++){
+                            var node =document.createElement('li')
+                            node.innerText = result[i]
+                            fragment.appendChild(node);
+                        }
+                        ct.appendChild(fragment)
+
+                        pageIndex += 5
+                    }else {
+                        console.log('出错了')
+                    }  
+                    isDataArrive = true
+                } 
+            }
+            xhr.open('get','loadMore?index='+pageIndex+'&length=5',true);
+            xhr.send();
+            isDataArrive = false
+
+        })
+    </script>
+</body>
+</html>
