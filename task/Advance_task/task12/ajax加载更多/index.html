@@ -42,7 +42,7 @@
 
 
     <script>
-        var ct = document.querySelector('#ct')
+        /*var ct = document.querySelector('#ct')
         var btn = document.querySelector('#load-more')
         var pageIndex = 0
 
@@ -82,7 +82,81 @@
             xhr.send();
             isDataArrive = false
 
+        })*/
+
+        /*------------
+            下面是进行封装过的函数代码，功能和上面相同
+        --------------*/
+        var ct = document.querySelector('#ct')
+        var btn = document.querySelector('#load-more')
+        var pageIndex = 0
+
+        var isDataArrive = true
+
+
+        btn.addEventListener('click',function(e){
+            e.preventDefault();//阻止a链接跳转到底部
+            
+            if(!isDataArrive){ //当网速慢时，数据还没有获取到，防止用户重复点击
+                return ;
+            }
+
+            loadData(function(news){
+                renderPage(news)
+                pageIndex += 5
+                isDataArrive = true
+            });
+            isDataArrive = false
         })
+
+
+        function loadData(callback){
+            ajax({
+                type: "get",
+                url: "/loadMore",
+                data: {
+                    index:pageIndex,
+                    length: 5
+                },
+                onSuccess: callback,
+                onError: function(){
+                    console.log('error')
+                }
+            })
+
+        }
+
+        function renderPage(news){
+            var fragment = document.createDocumentFragment()
+            for(var i = 0;i < news.length;i++){
+                var node =document.createElement('li')
+                node.innerText = news[i]
+                fragment.appendChild(node);
+            }
+            ct.appendChild(fragment)
+        }
+
+        function ajax(options){
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange =function(){
+                if(xhr.readyState === 4){
+                    if(xhr.status === 200 || xhr.status === 304){
+                        var result = JSON.parse(xhr.responseText)
+                        options.onSuccess(result)
+                    }else{
+                        options.onError()
+                    }
+                }
+            }
+            var query = '?'
+            for(key in options.data){
+                query += key + '=' + options.data[key] + '&'
+            }
+            query = query.substr(0,query.length-1)
+            xhr.open(options.type,options.url + query, true);
+            xhr.send();
+            //如果是post方式，则要设置xhmhttp.setRequestHeader()和xmlHttp.send()
+        }
     </script>
 </body>
 </html>

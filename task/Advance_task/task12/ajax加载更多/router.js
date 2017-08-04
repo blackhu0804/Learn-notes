@@ -8,5 +8,8 @@ app.get('/loadMore',function(req,res){
         data.push('新闻' + (parseInt(curIdx) + i))
     }
 
-    res.send(data);
+    setTimeout(function(){
+        res.send(data);
+    },3000)
+    
 })
