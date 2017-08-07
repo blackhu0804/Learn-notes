@@ -59,11 +59,11 @@ var obj = $('<div class="test"><p><span>Done</span></p></div>');
 ### 删除元素
 
 - .remove([selector])
-    - 删除被选元素（及其子元素）
+		- 删除被选元素（及其子元素）
 - .empty()
-    - 清空被选择元素内所有子元素，自己存在
+		- 清空被选择元素内所有子元素，自己存在
 - .detach()
-    - .detach() 方法和.remove()一样, 除了 .detach()保存所有jQuery数据和被移走的元素相关联。当需要移走一个元素，不久又将该元素插入DOM时，这种方法很有用。
+		- .detach() 方法和.remove()一样, 除了 .detach()保存所有jQuery数据和被移走的元素相关联。当需要移走一个元素，不久又将该元素插入DOM时，这种方法很有用。
 
 ### 包裹元素
 
@@ -91,3 +91,144 @@ $('div').html('123')
 [DOM操作](http://www.jquery123.com/category/manipulation/)
 
 [DOM操作2](http://book.jirengu.com/fe/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JQuery/DOM%E6%93%8D%E4%BD%9C.html)
+
+## 事件
+
+在1.7之前的版本中jQuery处理事件有多个方法，作用各不相同，后来统一的使用`on/off`方法
+
+### 绑定移除事件
+- .on( events [,selector ] [,data ], handler(eventObject) )
+- .off( events [, selector ] [, handler ] )
+```html
+	<div class="box">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+	</div>
+
+	<input type="text" id="ipt"	>
+	<button id="btn">添加</button>
+	<div id="wrap">
+		
+	</div>
+
+<script>
+	$('.box>ul').on('click', 'li',function(){
+		var str = $(this).text()
+		$('#wrap').text(str)
+	})
+		
+	$('.box>ul').on('click.hello', 'li',{name:"suyu"},function(e){
+		console.log(e.data.name)
+	})
+	$('#btn').on('click',function(){
+		var value = $('#ipt').val()
+		$('.box>ul').append('<li>' + value +'</li>')
+	})
+
+	$('.box>ul').off('click.hello')
+</script>
+```
+
+### .trigger( eventType [, extraParameters ] )
+
+```js
+//根据绑定到匹配元素的给定的事件类型执行所有的处理程序和行为
+$('#foo').on('click', function() {
+  alert($(this).text());
+});
+$('#foo').trigger('click');
+```
+
+- [事件api](http://www.jquery123.com/category/events/)
+
+## 属性CSS操作
+
+### .val([value])
+```js
+$('input').val()//获取input的值
+
+$('input').val('newValue');//改变input的值
+```
+
+### .attr()
+
+```js
+<input type="text" value="hello">
+
+$('input').attr('type')		//text
+```
+
+### removeattr()
+
+## CSS相关
+
+- .css(propertyName) / .css(propertyNames)
+- .css(propertyName,value) / .css( propertyName, function(index, value) ) / .css( propertiesJson )
+
+```html
+	<div class="box"></div>
+
+	<script>
+	$('.box').css({height: '30px', 'border': '1px solid red'})
+	</script>
+```
+
+- .addClass(className) / .removeClass(className)
+
+为元素添加class，不是覆盖原class，是追加，也不会检查重复
+```js
+$( "p" ).addClass( "myClass yourClass" );
+$( "p" ).removeClass( "myClass yourClass" );
+```
+
+- .hasClass(className)
+
+检查元素是否包含某个class，返回true/false
+
+```js
+$( "#mydiv" ).hasClass( "foo" )
+```
+
+- .toggleClass(className)
+
+toggle是切换的意思，方法用于切换
+```js
+		$('.box').on('click',function(){
+			$('.box').toggleClass('active')
+		})
+```
+
+[CSS](http://www.jquery123.com/category/css/)
+
+## [动画](http://www.jquery123.com/category/effects/)
+
+### 自定义
+
+.animate( properties [, duration ] [, easing ] [, complete ] )
+```html
+	<div class="box" style="position: relative;background-color: red;width: 50px;height: 50px;"></div>
+	<button id="btn">变化</button>
+	<script>
+	$('#btn').on('click',function(){
+		// $('.box').animate({width:80,height:80,left:0,top:0},1000)
+		// 					.animate({width:60,height:60,left:100},1000)
+		// 					.animate({left:0},1000)
+
+		var actions = [
+			{width:80,height:80,left:0,top:0},
+			{width:60,height:60,left:100},
+			{top:100},
+			{left:0},
+			{top:0}
+		]
+
+		actions.forEach(function(action,index){
+			$('.box').animate(action,500)
+		})
+	})	
+	</script>
+```
