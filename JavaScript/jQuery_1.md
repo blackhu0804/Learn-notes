@@ -214,9 +214,6 @@ toggle是切换的意思，方法用于切换
 	<button id="btn">变化</button>
 	<script>
 	$('#btn').on('click',function(){
-		// $('.box').animate({width:80,height:80,left:0,top:0},1000)
-		// 					.animate({width:60,height:60,left:100},1000)
-		// 					.animate({left:0},1000)
 
 		var actions = [
 			{width:80,height:80,left:0,top:0},
