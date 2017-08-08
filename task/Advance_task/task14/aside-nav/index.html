@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="http://cdn.staticfile.org/jquery/3.1.0/jquery.min.js"></script>
+  <title>Document</title>
+  <style>
+    ul,li{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    a{
+      color: #333;
+      text-decoration: none;
+    }
+    .nav-aside {
+      width: 200px;
+      background-color: #cc2121;
+    }
+    .nav-aside>.category {
+      padding: 10px 20px;
+      border-bottom: 1px dotted #de272e;
+      cursor: pointer;
+      position: relative;
+    }
+    .nav-aside .categray-title {
+      color: #eee;
+    }
+    .nav-aside .goto-icon {
+      float: right;
+      color: #eee;
+    }
+    .child-panel {
+      position: absolute;
+      top: 0;
+      left: 200px;
+      width: 220px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      display: none;
+    }
+    .category .child-panel>li {
+      text-align: center;
+      float: left;
+      width: 100px;
+      padding: 10px 5px;
+    }
+    .category .child-panel>li>a:hover{
+      color: #de272e;
+    }
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <ul class="nav-aside">
+      <li class="category">
+        <a class="categray-title" href="#">珠宝玉器</a>
+        <span class="goto-icon">></span>
+        <ul class="child-panel">
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+        </ul>  
+        </li>
+      <li class="category">
+        <a class="categray-title" href="#">珠宝玉器</a>
+        <span class="goto-icon">></span>
+        <ul class="child-panel">
+          <li><a href="">翡翠</a></li>
+          <li><a href="">翡翠</a></li>
+          <li><a href="">翡翠</a></li>
+          <li><a href="">翡翠</a></li>
+          <li><a href="">翡翠</a></li>
+          <li><a href="">翡翠</a></li>
+        </ul>  
+        </li>
+      <li class="category">
+        <a class="categray-title" href="#">珠宝玉器</a>
+        <span class="goto-icon">></span>
+        <ul class="child-panel">
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+        </ul>  
+        </li>
+      <li class="category">
+        <a class="categray-title" href="#">珠宝玉器</a>
+        <span class="goto-icon">></span>
+        <ul class="child-panel">
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+        </ul>  
+        </li>
+      <li class="category">
+        <a class="categray-title" href="#">珠宝玉器</a>
+        <span class="goto-icon">></span>
+        <ul class="child-panel">
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+          <li><a href="#">翡翠</a></li>
+        </ul>  
+        </li>
+    </ul>
+  </div>
+
+  <script>
+    $(function(){
+      $('.nav-aside .category').on('mouseenter',function(){
+        $(this).find('.child-panel').addClass('active');
+      })
+      $('.nav-aside .category').on('mouseleave',function(){
+        $(this).find('.child-panel').removeClass('active');
+      })
+    })
+  </script>
+</body>
+</html>
