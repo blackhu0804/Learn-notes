@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.staticfile.org/jquery/3.1.0/jquery.min.js"></script>
+  <style>
+    *{
+      box-sizing: content-box;
+    }
+    body,ul,li{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .clearfix::after {
+      content: '';
+      clear: both;
+      display: block;
+    }
+    .tabs {
+      border: 1px solid #ccc;
+      width: 362px;
+      border-bottom: none;
+    }
+    .tab-title {
+      float: left;
+      width: 120px;
+      text-align: center;
+      border-right: 1px solid #ccc;
+      padding: 10px 0px;
+      cursor: pointer;
+    }
+    .tab-title:last-child{
+      border-right: none;
+    }
+    .tab-title.active{
+      background-color: #eee;
+    }
+    .wrap {
+      width: 364px;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+    .content{
+      position: absolute;
+      width: 1500px;
+    }
+    .content>li{
+      width: 362px;
+      height: 200px;
+      overflow: hidden;
+      float: left;
+      border: 1px solid #ccc;
+    }
+    .content>li:nth-child(1){
+      background-color: red;
+    }
+    .content>li:nth-child(2){
+      background-color: aquamarine;
+    }
+    .content>li:nth-child(3){
+      background-color: royalblue;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div id="ct">
+    <ul class="tabs clearfix">
+      <li class="tab-title active">tab1</li>
+      <li class="tab-title">tab2</li>
+      <li class="tab-title">tab3</li>
+    </ul>
+    <div class="wrap">
+      <ul class="content clearfix">
+        <li>content1</li>
+        <li>content2</li>
+        <li>content3</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    $('.tab-title').on('click',function(){
+      var idx = $(this).index()
+      var width = $('.content>li').width()
+      $(this).addClass('active').siblings().removeClass('active');
+
+      $('.content').animate({left: (-width-2) * idx})
+    })
+  </script>
+</body>
+</html>
