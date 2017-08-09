@@ -240,3 +240,19 @@ $('input:checked').val('23')//修改选择的value
 $("img").attr("src");//获取img的src
 $("img").attr({ src: "test.jpg", alt: "Test Image" });//为所有图像设置src和alt属性
 ```
+
+## 题目8： 使用 jQuery实现如下效果
+
+- [效果实现](http://js.jirengu.com/cobas/1/edit)
+
+## 题目9：. 使用 jQuery 实现如下效果
+
+- [效果实现](http://js.jirengu.com/zuday/2/edit)
+
+## 题目10：实现如下效果
+
+- [效果实现](http://js.jirengu.com/kifa/2/edit)
+
+## 题目11： 左右切换的 Tab 效果
+
+- [效果实现](http://js.jirengu.com/qiboz/1/edit)
