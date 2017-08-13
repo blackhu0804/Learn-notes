@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.staticfile.org/jquery/3.1.0/jquery.min.js"></script>
+  <title>图片懒加载</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+    }
+    .container{
+      width: 600px;
+      margin: 0 auto;
+    }
+    .container li{
+      float: left;
+      margin: 10px 10px;
+    }
+    .container li img{
+      width: 240px;
+      height: 180px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul class="container">
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img id="a" src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img id="b" src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/10.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/12.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/15.jpg" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="http://img.zcool.cn/community/0115bb5715c7356ac725134349d24b.gif" data-src="http://cdn.jirengu.com/book.jirengu.com/img/16.jpg" />
+      </a>
+    </li>
+  </ul>
+
+
+  <script>
+    /*
+      1. 将所有的img标签，把真实的src地址放到自定义属性data-img
+      2. 当滚动页面时，检查页面所有的img标签，看这个标签是否出现在我们的视野，
+      当出现在我们的视野时，再去判断它是否已经加载过，如果没有加载过，加载它
+    */
+
+    function lazyRender(){
+      $('.container img').each(function(){
+        if(checkShow($(this)) && !isLoaded($(this)) ){
+          loadImg($(this))
+        }
+      })
+    }    
+
+    lazyRender()
+    var clock
+    $(window).on('scroll',function(){
+      if(clock){
+        clearTimeout(clock)
+      }
+      clock = setTimeout(function(){
+        console.log('aaa')
+        lazyRender()
+      },300)
+      
+    })
+
+    function checkShow($img){
+      var scrollTop = $(window).scrollTop()
+      var windowHeight = $(window).height()
+      var offsetTop = $img.offset().top
+
+      if(offsetTop < scrollTop + windowHeight && offsetTop > scrollTop){
+        return true
+      }
+      return false 
+    }
+
+    function isLoaded($img){
+      return $img.attr('data-src') === $img.attr('src')
+    }
+
+    function loadImg($img){
+      $img.attr('src',$img.attr('data-src'))
+    }
+
+  </script>
+</body>
+
+</html>
