@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.staticfile.org/jquery/3.1.0/jquery.min.js"></script>
+  <title>轮播</title>
+  <style>
+    html,body,ul,li{
+      margin: 0;
+      padding: 0;
+    }
+    ul{
+      list-style: none;
+    }
+    a{
+      text-decoration: none;
+    }
+    .layout{
+      width: 400px;
+      margin: 0 auto;
+    }
+    .carousel {
+      width: 310px;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+    .carousel .img-ct {
+      position: absolute;
+      overflow: hidden;
+    }
+    .carousel .img-ct img{
+      position: relative;
+      width: 310px;
+      height: 200px;
+    }
+    .carousel .img-ct>li {
+      float: left;
+    }
+    .carousel .arrow{
+      position: absolute;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 30px;
+      border: 2px solid #fff;
+      background-color: rgba(6, 6, 6, .4);
+      color: #fff;
+      top: 50%;
+      margin-top: -15px;
+      text-align: center;
+    }
+    .carousel .arrow:hover{
+      opacity: .8;
+    }
+    .carousel .pre {
+      left: 10px;
+    }
+    .carousel .next{
+      right: 10px;
+    }
+    .carousel .bullet {
+      width: 100%;;
+      position: absolute;
+      bottom: 10px;
+      text-align: center;
+      font-size: 0;
+    }
+    .carousel .bullet li{
+      width: 10px;
+      height: 10px;
+      border: 1px solid #fff;
+      border-radius: 10px;
+      display: inline-block;
+      margin-left: 10px;
+      cursor: pointer;  
+    }
+    .carousel .bullet li.active{
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="carousel">
+      <ul class="img-ct">
+        <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="  "></a></li>
+        <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg" alt=""></a></li>
+        <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg" alt=""></a></li>
+        <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg" alt=""></a></li>
+      </ul>
+      <a class="pre arrow" href="#"><</a>
+      <a class="next arrow" href="#">></a>
+      <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+
+
+<script>
+    var $ct = $('.img-ct')
+    var $next = $('.carousel .next')
+    var $pre = $('.carousel .pre')
+    var $imgs = $('.img-ct>li')
+    var $bullet = $('.bullet')
+
+    var imgsLength = $imgs.length
+    var isEnd = false
+    var curIdx = 0;
+    var idx
+    $next.on('click',function(){
+      playNext()
+    })
+    $pre.on('click',function(){
+      playPre()
+    })
+
+    $bullet.find('li').on('click',function(){
+      var idx = $(this).index()
+      $imgs.eq(curIdx).fadeOut(500)
+      $imgs.eq(idx).fadeIn(500)
+      
+      setBullet(idx)
+      curIdx = idx
+    })
+
+    function playNext(){
+      $imgs.eq(curIdx%imgsLength).fadeOut(500)
+      $imgs.eq((curIdx + 1)%imgsLength).fadeIn(500)
+      curIdx++
+
+      setBullet(curIdx%imgsLength)
+    }
+    function playPre(){
+      $imgs.eq(curIdx%imgsLength).fadeOut(500)
+      $imgs.eq((curIdx + 3)%imgsLength).fadeIn(500)
+      curIdx--
+
+      setBullet(curIdx%imgsLength)
+    }
+
+    function setBullet(index){
+      $bullet.children().removeClass('active')
+        .eq(index).addClass('active')
+    }
+
+    setInterval(function(){
+      playNext()
+    },1500)
+</script>
+</body>
+</html>
