@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.staticfile.org/jquery/3.1.0/jquery.min.js"></script>
+  <title>lazyLoad-waterFull</title>
+  <style>
+    body,ul,li{
+      margin: 0;
+      padding: 0;
+    }
+    ul,ol{
+      list-style: none;
+    }
+    a{
+      text-decoration: none;
+      color: #555;
+    }
+    #pic-ct{
+      position: relative;  
+    }
+    .item {
+      position: absolute;
+      width: 330px;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      transition: all .8s;
+    }
+    #pic-ct .item .header {
+      height: 25px;
+      margin: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    #pic-ct .item img{
+      width: 330px;
+    }
+    #pic-ct .desp {
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 10px 15px 0;
+      color: #aaa;
+    }
+    .load {
+      visibility: hidden;
+      height: 20px;
+    }
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="ct-waterfall">
+      <ul id="pic-ct">
+        <!--<li class="item">
+          <a href="#" class="link">
+            <img src="https://unsplash.it/300/200" alt="">
+            <h4 class="header">标题</h4>
+            <p class="desp">新闻内容</p>
+          </a>
+        </li>-->
+      </ul>
+      <div class="load">我是看不到的</div>
+    </div>
+  </div>
+
+  <script>
+    //1. 获取数据
+    //2. 将数据变为DOM。通过瀑布流放到页面上
+    //3. 当页面滚到底部的时候，
+
+    var curPage = 1
+    var perPageCount = 10
+
+    
+    start()
+
+    function start(){
+      getData(function(newsList){
+      console.log(newsList)
+
+      $.each(newsList,function(idx,news){
+        var $node = getNode(news)
+        $node.find('img').on('load',function(){
+          $('#pic-ct').append($node)
+          console.log($node, 'loaded...')
+          waterFallPlace($node)
+          })
+        })
+      })
+    }
+    
+    $(window).scroll(function(){
+      if(isVisible($('.load'))){
+        start()
+      }
+    })
+
+
+    function getData(callback){
+      $.ajax({
+        url: 'http://platform.sina.com.cn/slide/album_tech',
+        dataType: 'jsonp',
+        jsonp: 'jsoncallback',
+        data: {
+          app_key: '1271687855',
+          num: perPageCount,
+          page: curPage
+        }
+      }).done(function(ret){
+        if(ret && ret.status && ret.status.code === '0'){
+          callback(ret.data) //生成Dom结构
+          curPage++
+        }else {
+          console.log('get error data')
+        }
+      })
+    }
+
+    function getNode(item){
+      var html = ''
+      html += '<li class="item">'
+      html +=   '<a href="' + item.url + '" class="link">'
+      html +=     '<img src="' + item.img_url + '" alt="">'
+      html +=     '<h4 class="header">' + item.short_name + '</h4>'
+      html +=     '<p class="desp">' + item.short_intro + '</p>'
+      html += '</a></li>'
+
+      return $(html)
+    }
+
+    function waterFallPlace($node){
+      var colSumHeight = []
+      var colNum = parseInt($('#pic-ct').width()/$('.item').outerWidth(true))
+      for(var i = 0;i < colNum;i++){
+        colSumHeight[i] = 0
+      }
+
+      $('.item').each(function(){
+        var minValue = Math.min.apply(null,colSumHeight)
+        var minIndex = colSumHeight.indexOf(minValue)
+
+        $(this).css({
+          top:colSumHeight[minIndex],
+          left: $(this).outerWidth(true) * minIndex
+        })
+
+        colSumHeight[minIndex] += $(this).outerHeight(true)
+        $('#pic-ct').height(Math.max.apply(null,colSumHeight)) //获取最大高度，用于判断滚动到底部
+      })
+    }
+    $(window).resize(function(){
+          waterFallPlace('.item')
+    })
+
+    function isVisible($el){
+      var scrollHeight = $(window).scrollTop()
+      var windowHeight = $(window).height()
+      var top = $el.offset().top
+
+      if(top < scrollHeight + windowHeight){
+        return true;
+      }else {
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

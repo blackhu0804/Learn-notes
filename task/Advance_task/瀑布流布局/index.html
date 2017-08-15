@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.staticfile.org/jquery/3.1.0/jquery.min.js"></script>
+  <style>
+    .ct {
+      position: relative;
+    }
+    .item {
+      width: 200px;
+      margin-right: 10px;
+      margin-top: 10px;
+      position: absolute;
+      transition: all 1s;
+    }
+    .h1{
+      height: 200px;
+      background-color: #f4b300;
+    }
+    .h2{
+      height: 300px;
+      background-color: #691aaa;
+    }
+    .h3{
+      height: 400px;
+      background-color: #006ac1 ;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="ct">
+    <div class="item h1">1</div>
+    <div class="item h2">2</div>
+    <div class="item h3">3</div>
+    <div class="item h1">4</div>
+    <div class="item h1">5</div>
+    <div class="item h2">6</div>
+    <div class="item h2">7</div>
+    <div class="item h3">8</div>
+    <div class="item h1">9</div>
+    <div class="item h3">10</div>
+    <div class="item h1">11</div>
+    <div class="item h3">12</div>
+    <div class="item h2">13</div>
+    <div class="item h3">14</div>
+  </div>
+
+  <script>
+
+    
+
+    
+
+    var WaterFull = (function(){
+      function init(){
+        waterFull()
+
+        $(window).resize(function(){
+          waterFull()
+        })
+      }
+
+      function waterFull(){
+        var colLength = parseInt($('.ct').width()/$('.item').width())    //一行的个数
+        var itemArr = []
+
+        for(var i = 0;i < colLength;i++){
+          itemArr[i] = 0
+          console.log(itemArr[i])
+        }
+
+        $('.item').each(function(){
+          var minValue = Math.min.apply(null,itemArr)
+          var minIndex = itemArr.indexOf(minValue)
+
+
+          $(this).css({
+            top: itemArr[minIndex],
+            left: $(this).outerWidth(true) * minIndex //包括边框
+          })
+
+          itemArr[minIndex] += $(this).outerHeight(true)  //将对应列的高度改变
+        })
+      }
+
+
+      return {
+        init: init
+      }
+    })()
+
+    WaterFull.init()
+  </script>
+
+</body>
+</html>
