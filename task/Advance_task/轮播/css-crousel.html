@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    .demo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .slides{
+      position: relative;
+      height: 400px;
+      width: 534px;
+    }
+    .slides>li {
+      position: absolute;
+      display: none;
+    }
+    .slides>li>img{
+      height: 400px;
+    }
+    input[name=currentSlide]:nth-child(1):checked ~ .slides > li:nth-child(1),
+    input[name=currentSlide]:nth-child(2):checked ~ .slides > li:nth-child(2),
+    input[name=currentSlide]:nth-child(3):checked ~ .slides > li:nth-child(3),
+    input[name=currentSlide]:nth-child(4):checked ~ .slides > li:nth-child(4){
+      display: block;
+      animation: slide 1s;
+    }
+    input[name=currentSlide]:nth-child(1):checked ~ .labels > li:nth-child(1) > label,
+    input[name=currentSlide]:nth-child(2):checked ~ .labels > li:nth-child(2) > label,
+    input[name=currentSlide]:nth-child(3):checked ~ .labels > li:nth-child(3) > label,
+    input[name=currentSlide]:nth-child(4):checked ~ .labels > li:nth-child(4) > label{
+      background-color: aquamarine;
+      color: white;
+    }
+    input[name=currentSlide]{
+      display: none;
+    }
+    .labels {
+      display: flex;
+    }
+    .labels label {
+      width: 20px;
+      height: 20px;
+      background-color: #ddd;
+      display: block;
+      border-radius: 50%;
+      text-align: center; 
+      line-height: 20px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    
+    @keyframes slide{
+      from{
+        opacity: 0.5;
+      }
+      to{
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <section class="demo">
+    <input type="radio" name="currentSlide" id="slide1" checked>
+    <input type="radio" name="currentSlide" id="slide2">
+    <input type="radio" name="currentSlide" id="slide3">
+    <input type="radio" name="currentSlide" id="slide4">
+    <ul class="slides">
+      <li> <img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt=""></li>
+      <li> <img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg" alt=""></li>
+      <li> <img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg" alt=""></li>
+      <li> <img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg" alt=""></li>
+    </ul>
+
+    <ul class="labels">
+      <li><label for="slide1">1</label></li>
+      <li><label for="slide2">2</label></li>
+      <li><label for="slide3">3</label></li>
+      <li><label for="slide4">4</label></li>
+    </ul>
+  </section>
+</body>
+</html>
