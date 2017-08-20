@@ -14,13 +14,13 @@ JavaScript有三种方法，可以确定一个值到底是什么类型。
 
 - typeof运算符
 
-```JavaScript
+```js
 typeof 123 // "number"
 typeof '123' // "string"
 typeof false // "boolean"
 ```
 
-```JavaScript
+```js
 function f() {}
 typeof f
 // "function"
@@ -37,7 +37,7 @@ typeof null // "object"
 - instanceof运算符
 
     区分数组和对象：
-```JavaScript
+```js
 var o = {};
 var a = [];
 
@@ -61,7 +61,7 @@ var a = null;
 
 在`if`语句中，它们都会被自动转为`false`，相等运算符（`==`）甚至直接报告两者相等。
 
-```JavaScript
+```js
 if (!undefined) {
   console.log('undefined is false');
 }
@@ -87,7 +87,7 @@ undefined == null
 - 作为函数的参数，表示该函数的参数是一个没有任何内容的对象。
 - 作为对象原型链的终点。
 
-```JavaScript
+```js
 var i;
 i // undefined
 
@@ -123,7 +123,7 @@ x // undefined
 - NaN
 - ""（空字符串）
 
-```JavaScript
+```js
 if ('') {
   console.log(true);
 }
@@ -147,7 +147,7 @@ if ({}) {
 
 JavaScript的数字类型和其它语言有所不同，没有整型和浮点数的区别，统一都是Number类型，可以表示十进制、八进制、十六进制.
 
-```JavaScript
+```js
 var a = 10; //十进制
 var b = 073; //八进制
 var c = 0xf3; //十六进制
@@ -157,16 +157,16 @@ var c = 0xf3; //十六进制
 
 浮点数是指数字包含小数点，小数点后至少有一位数字(没有或者是0会转为整数)，前面可以没有
 
-```JavaScript
+```js
 var a = 0.27;
 var b = .45;
 ```
 对于极大或极小的数字可以使用科学计数法
-```JavaScript
+```js
 var a = 3.1e5; //310000
 ```
 浮点数最高精度是17位，但是在计算的时候精度不如整数
-```JavaScript
+```js
 	1 - 0.9; // 0.09999999999999998
 	0.1 + 0.2; //0.30000000000000004
 ```
@@ -178,7 +178,7 @@ var a = 3.1e5; //310000
 ### NaN
 
 NaN含义是Not a Number，表示非数字，NaN和任何值都不相等，包括自己
-```JavaScript
+```js
     NaN == NaN; //false
     parseInt('abc'); //NaN
 ```
