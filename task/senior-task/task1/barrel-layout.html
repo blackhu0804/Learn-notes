@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.staticfile.org/jquery/3.1.0/jquery.min.js"></script>
+  <title>木桶布局</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .img-preview {
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .img-row {
+      margin-bottom: 10px;
+    }
+    .img-row::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .img-box {
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="img-preview">
+
+  </div>
+
+  <script>
+    function Barrel($ct){
+      this.$ct = $ct;
+      this.rowList = [];
+      this.loadImg();
+    }
+
+    Barrel.prototype = {
+      loadImg: function(){
+        
+        var _this = this;
+        var imgUrls = this.getImgUrls(40);
+        $.each(imgUrls, function(idx, url){
+          var img = new Image();
+          img.src = url;
+          img.onload = function(){
+            var originWidth = img.width,
+                originHeight = img.height,
+                ratio = originWidth/originHeight;
+
+            var imgInfo = {
+              target: $(this),
+              width: 100 * ratio,
+              height: 100,
+              ratio: ratio
+            };
+            _this.render(imgInfo);
+          }
+        })
+      },
+
+      render: function(imgInfo){
+        var _this = this;
+        var rowList = this.rowList,
+            rowWidth = 0,
+            rowHeight = 0,
+            clientWidth = this.$ct.width(),
+            lastImgInfo = imgInfo;
+        console.log(this.$ct.width())
+        this.rowList.push(imgInfo);
+
+        $.each(rowList,function(idx, imgInfo){
+          rowWidth += imgInfo.width;
+          if(rowWidth > clientWidth){
+            rowList.pop();
+            rowWidth = rowWidth - lastImgInfo.width;
+            rowHeight = clientWidth * 100 / rowWidth;
+            _this.createRow(rowHeight);
+            _this.rowList = [];
+            _this.rowList.push(lastImgInfo);
+          }
+        });
+      },
+
+      createRow: function(rowHeight){
+        var $rowCt = $('<div class="img-row"></div>');
+        $.each(this.rowList, function(idx, imgInfo){
+          var $imgCt = $('<div class="img-box"></div>'),
+              $img = imgInfo.target;
+              $img.height(rowHeight);
+              $imgCt.append($img);
+              $rowCt.append($imgCt);
+        });
+        this.$ct.append($rowCt);
+      },
+
+      getImgUrls: function(num){  //获取图片地址
+        var color,width,height,urls = [];
+        for(var i = 0;i < num;i++){
+          color = Math.random().toString(16).substring(2,8);  //以16进制显示数字，然后去掉后六位。
+          width = Math.floor(Math.random() * 100 + 50);
+          height = Math.floor(Math.random() * 30 + 50);
+          urls.push("http://placehold.it/" + width + "x" + height + "/" + color + "/fff");
+        }
+        return urls;
+      }
+    }
+    
+    
+    var barrel = new Barrel($('.img-preview'));
+  </script>
+</body>
+</html>

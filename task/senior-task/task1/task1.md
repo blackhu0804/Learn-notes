@@ -57,7 +57,7 @@ Person.prototype.printName=function(){
 var person1=new Person('Byron');
 var person2=new Person('Frank');
 ```
-
+![prototype.png](https://github.com/hu970804/Learn-notes/blob/master/task/senior-task/task1/prototype.png)
 ## 问题5： 创建一个 Car 对象，拥有属性name、color、status；拥有方法run，stop，getStatus 
 ```js
 function Car(){
@@ -84,4 +84,8 @@ car.getStatus()
 
 ## 问题6： 创建一个 GoTop 对象，当 new 一个 GotTop 对象则会在页面上创建一个回到顶部的元素，点击页面滚动到顶部。拥有以下属性和方法
 
+[GoTop](http://js.jirengu.com/pilat/1/edit)
 
+## 问题7： 使用木桶布局实现一个图片墙
+
+[barrel-layout](http://js.jirengu.com/kopek/1/edit?html,output)
