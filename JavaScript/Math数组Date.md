@@ -74,8 +74,29 @@ var a4 = [];
 var a5 = [10];
 ```
 
+### Array.isArray()
+```js
+//Array.isArray方法用来判断一个值是否为数组。它可以弥补typeof运算符的不足。
+var a = [1, 2, 3];
+
+typeof a // "object"
+Array.isArray(a) // true
+```
+
 基本方法：
 ```js
+//valueOf()，toString()
+//valueOf方法返回数组本身
+var a = [1, 2, 3];
+a.valueOf() // [1, 2, 3]
+
+//toString方法返回数组的字符串形式。
+var a = [1, 2, 3];
+a.toString() // "1,2,3"
+
+var a = [1, 2, 3, [4, 5, 6]];
+a.toString() // "1,2,3,4,5,6"
+
 //栈方法
 var a = new Array(1,2,3);
 a.push(4);
@@ -116,14 +137,101 @@ var a = new Array(1,2,3,4,5);
 a.reverse();
 console.log(a); //[5, 4, 3, 2, 1]
 
-//sort
+/*
+	sort方法不是按照大小排序，而是按照对应字符串的字典顺序排序。
+	如果想让sort方法按照自定义方式排序，可以传入一个函数作为参数，表示按照自定义方法进行排序。该函数本身又接受两个参数，表示进行比较的两个元素。如果返回值大于0，表示第一个元素排在第二个元素后面；其他情况下，都是第一个元素排在第二个元素前面。
+*/
 var a = [-3,1,3,18,22,9]
 arr.sort(function(a,b){
 	return a-b;
 })
     console.log(arr);
+
+
+```
+### map()
+
+- map方法对数组的所有成员依次调用一个函数，根据函数结果返回一个 新数组 。
+```js
+var numbers = [1, 2, 3];
+numbers.map(function (n) {
+  return n + 1;
+});
+// [2, 3, 4]
+numbers
+// [1, 2, 3]
 ```
 
+- map方法接受一个函数作为参数。该函数调用时，map方法会将其传入三个参数，分别是当前成员、当前位置和数组本身。
+```js
+[1, 2, 3].map(function(elem, index, arr) {
+  return elem * index;
+});
+// [0, 2, 6]
+```
+
+- map方法不仅可以用于数组，还可以用于字符串，用来遍历字符串的每个字符。但是，不能直接使用，而要通过函数的call方法间接使用，或者先将字符串转为数组，然后使用。
+```js
+var upper = function (x) {
+  return x.toUpperCase();
+};
+
+[].map.call('abc', upper)
+// [ 'A', 'B', 'C' ]
+
+// 或者
+'abc'.split('').map(upper)
+// [ 'A', 'B', 'C' ]
+```
+
+### filter()
+
+- filter方法的参数是一个函数，所有数组成员依次执行该函数，返回结果为true的成员组成一个新数组返回。该方法不会改变原数组。
+
+```js
+[1, 2, 3, 4, 5].filter(function (elem) {
+  return (elem > 3);
+})
+// [4, 5]
+```
+
+- filter方法的参数函数可以接受三个参数，第一个参数是当前数组成员的值，这是必需的，后两个参数是可选的，分别是当前数组成员的位置和整个数组。
+```js
+[1, 2, 3, 4, 5].filter(function (elem, index, arr) {
+  return index % 2 === 0;
+});
+// [1, 3, 5]
+```
+
+### some()，every()
+
+> 这两个方法类似“断言”（assert），用来判断数组成员是否符合某种条件
+
+- `some`方法是只要有一个数组成员的返回值是`true`，则整个`some`方法的返回值就是`true`，否则`false`。
+- `every`方法则是所有数组成员的返回值都是`true`，才返回`true`，否则`false`
+
+```js
+var arr = [1, 2, 3, 4, 5];
+arr.some(function (elem, index, arr) {
+  return elem >= 3;
+});
+// true
+
+var arr = [1, 2, 3, 4, 5];
+arr.every(function (elem, index, arr) {
+  return elem >= 3;
+});
+// false
+
+```
+### indexOf()，lastIndexOf()
+
+- `indexOf`方法返回给定元素在数组中第一次出现的位置，如果没有出现则返回-1。
+- `indexOf`方法还可以接受第二个参数，表示搜索的开始位置
+- `lastIndexOf`方法返回给定元素在数组中最后一次出现的位置，如果没有出现则返回-1。
+
+注意，如果数组中包含NaN，这两个方法不适用，即无法确定数组成员是否包含NaN。
+这是因为这两个方法内部，使用严格相等运算符（===）进行比较，而NaN是唯一一个不等于自身的值。
 ## Date
 
 > Date对象是JavaScript提供的日期和时间的操作接口
