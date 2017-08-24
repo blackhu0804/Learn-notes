@@ -60,6 +60,35 @@
 
 > JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。它基于JavaScript（Standard ECMA-262 3rd Edition - December 1999）的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。这些特性使JSON成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成(网络传输速度)。
 
+
+## JSON.stringify()
+`JSON.stringify`方法用于将一个值转为字符串。该字符串符合 JSON 格式，并且可以被`JSON.parse`
+```js
+JSON.stringify('abc') // ""abc""
+JSON.stringify(1) // "1"
+JSON.stringify(false) // "false"
+JSON.stringify([]) // "[]"
+JSON.stringify({}) // "{}"
+
+JSON.stringify([1, "false", false])
+// '[1,"false",false]'
+
+JSON.stringify({ name: "张三" })
+// '{"name":"张三"}'
+```
+## JSON.parse()
+`JSON.parse`方法用于将JSON字符串转化成对象。
+```js
+JSON.parse('{}') // {}
+JSON.parse('true') // true
+JSON.parse('"foo"') // "foo"
+JSON.parse('[1, 5, "false"]') // [1, 5, "false"]
+JSON.parse('null') // null
+
+var o = JSON.parse('{"name": "张三"}');
+o.name // 张三
+```
+
 ## 举例
 ```js
 var str = '{"name":"suyu","age": 30}'
