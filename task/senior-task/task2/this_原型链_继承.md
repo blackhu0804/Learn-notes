@@ -221,7 +221,7 @@ var p1 = new Person('若愚', 27);  //共用一个原型上的printName
 
 `Object.create()` 方法会使用指定的原型对象及其属性去创建一个新的对象。
 
-![兼容性](http://www.jianshu.com/p/d77da76d0fcd)
+![兼容性](http://upload-images.jianshu.io/upload_images/5872850-1b4e50cad15042f2.png?imageMogr2/auto-orient/strip)
 
 ## 问题14： hasOwnProperty有什么作用？ 如何使用？
 
