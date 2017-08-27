@@ -119,3 +119,24 @@ var module= {
   }
 }
 ```
+
+# 原型链相关问题
+
+## 问题7：有如下代码，解释Person、 prototype、__proto__、p、constructor之间的关联。
+
+```js
+function Person(name){
+    this.name = name;
+}
+Person.prototype.sayName = function(){
+    console.log('My name is :' + this.name);
+}
+var p = new Person("若愚")
+p.sayName();
+```
+
+`Person`是一个构造函数，函数自动获得属性`Prototype`，`Prototype`里有一个`constructor`属性指向`Person`，p是`new`出来的一个Person实例，这个实例会有一个`__proto__`属性，指向`prototype`属性
+
+## 问题8： 上例中，对对象 p可以这样调用 p.toString()。toString是哪里来的? 画出原型图?并解释什么是原型链。
+
+(img)[https://jiantuku.com/#/albums/10029]
