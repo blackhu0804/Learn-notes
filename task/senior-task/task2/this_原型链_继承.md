@@ -188,3 +188,101 @@ console.log(ch); //d , 因为d 出现了5次
 
 # 继承相关问题
 
+## 问题11：继承有什么作用?
+
+继承是指一个对象直接使用另一对象的属性和方法
+
+## 问题12： 下面两种写法有什么区别?
+
+```js
+//方法1
+function People(name, sex){
+    this.name = name;
+    this.sex = sex;
+    this.printName = function(){
+        console.log(this.name);
+    }
+}
+var p1 = new People('饥人谷', 2)   //每次new都要创建一个新的printName方法
+
+//方法2
+function Person(name, sex){
+    this.name = name;
+    this.sex = sex;
+}
+
+Person.prototype.printName = function(){
+    console.log(this.name);
+}
+var p1 = new Person('若愚', 27);  //共用一个原型上的printName
+```
+
+## 问题13： Object.create 有什么作用？兼容性如何？
+
+`Object.create()` 方法会使用指定的原型对象及其属性去创建一个新的对象。
+
+(兼容性)[http://www.jianshu.com/p/d77da76d0fcd]
+
+## 问题14： hasOwnProperty有什么作用？ 如何使用？
+
+`hasOwnPerperty`是`Object.prototype`的一个方法，可以判断一个对象是否包含自定义属性而不是原型链上的属性，`hasOwnProperty`是JavaScript中唯一一个处理属性但是不查找原型链的函数。
+
+```js
+function Person(name){
+  this.name = name;
+}
+
+Person.prototype.sayName = function(){
+  console.log(this.name)
+}
+
+var p = new Person('Brain')
+
+p.hasOwnPerperty('name');   //true
+p.hasOwnPerperty('sayName');   //false
+```
+
+## 问题15：如下代码中call的作用是什么?
+```js
+function Person(name, sex){
+    this.name = name;
+    this.sex = sex;
+}
+function Male(name, sex, age){
+    Person.call(this, name, sex);    //这里的 call 有什么作用
+    //使Person方法在在Male的作用域中执行。
+    this.age = age;
+}
+```
+
+## 问题16： 补全代码，实现继承 
+
+```js
+function Person(name, sex){
+    // todo ...
+    this.name = name;
+    this.sex = sex;
+}
+
+Person.prototype.getName = function(){
+    // todo ...
+    console.log(this.name)
+};    
+
+function Male(name, sex, age){
+   //todo ...
+   Person.bind(this)(name, sex);
+   this.age = age;
+}
+
+Male.prototype = Object.create(Person.prototype);
+Male.prototype.constructor = Male; 
+//todo ...
+Male.prototype.getAge = function(){
+    //todo ...
+    console.log(this.age);
+};
+
+var suyu = new Male('suyu', '男', 20);
+suyu.getName();
+```
