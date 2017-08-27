@@ -139,11 +139,11 @@ p.sayName();
 
 ## 问题8： 上例中，对对象 p可以这样调用 p.toString()。toString是哪里来的? 画出原型图?并解释什么是原型链。
 
-(img)[https://github.com/hu970804/Learn-notes/blob/master/html%E5%92%8Ccss/img/20170827162100.png]
+!(img)[https://github.com/hu970804/Learn-notes/blob/master/html%E5%92%8Ccss/img/20170827162100.png]
 
 `p`并没有toString()方法，p会通过`__proto__`到对象`Person`的`prototype`中去寻找，如果没有，再从`prototype`的`__proto__`中去寻找，找到`toString()`方法
 
-(原型图)[https://github.com/hu970804/Learn-notes/blob/master/html%E5%92%8Ccss/img/5995182-0be3787620e75769.png]
+!(原型图)[https://github.com/hu970804/Learn-notes/blob/master/html%E5%92%8Ccss/img/5995182-0be3787620e75769.png]
 
 `p`可以调用`toString()`就是通过原型，原型的原型一级一级向上查找，最终在Object中找到。这就是原型链
 
@@ -221,7 +221,7 @@ var p1 = new Person('若愚', 27);  //共用一个原型上的printName
 
 `Object.create()` 方法会使用指定的原型对象及其属性去创建一个新的对象。
 
-(兼容性)[http://www.jianshu.com/p/d77da76d0fcd]
+!(兼容性)[http://www.jianshu.com/p/d77da76d0fcd]
 
 ## 问题14： hasOwnProperty有什么作用？ 如何使用？
 
