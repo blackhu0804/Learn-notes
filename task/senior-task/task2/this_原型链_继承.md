@@ -139,4 +139,3 @@ p.sayName();
 
 ## 问题8： 上例中，对对象 p可以这样调用 p.toString()。toString是哪里来的? 画出原型图?并解释什么是原型链。
 
-(img)[https://jiantuku.com/#/albums/10029]
