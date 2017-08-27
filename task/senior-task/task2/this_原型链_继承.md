@@ -139,3 +139,52 @@ p.sayName();
 
 ## 问题8： 上例中，对对象 p可以这样调用 p.toString()。toString是哪里来的? 画出原型图?并解释什么是原型链。
 
+(img)[https://github.com/hu970804/Learn-notes/blob/master/html%E5%92%8Ccss/img/20170827162100.png]
+
+`p`并没有toString()方法，p会通过`__proto__`到对象`Person`的`prototype`中去寻找，如果没有，再从`prototype`的`__proto__`中去寻找，找到`toString()`方法
+
+(原型图)[https://github.com/hu970804/Learn-notes/blob/master/html%E5%92%8Ccss/img/5995182-0be3787620e75769.png]
+
+`p`可以调用`toString()`就是通过原型，原型的原型一级一级向上查找，最终在Object中找到。这就是原型链
+
+## 问题9：对String做扩展，实现如下方式获取字符串中频率最高的字符
+
+```js
+String.prototype.getMostOften = function() {
+	var obj = {};
+	for(var i = 0;i < this.length;i++){
+		var key = this[i];
+		if(obj[key]){
+			obj[key]++;
+		}else{
+			obj[key] = 1;
+		}
+	}
+
+	var count = 0;
+	var maxKey;
+	for(var key in obj){
+		if(obj[key] > count){
+			maxKey = key;
+			count = obj[key];
+		}
+	}
+	return maxKey + ', 因为 ' + maxKey + ' 出现了' + count + '次';
+};
+
+var str = 'ahbbccdeddddfg';
+var ch = str.getMostOften();
+console.log(ch); //d , 因为d 出现了5次
+```
+
+## 问题10： instanceOf有什么作用？内部逻辑是如何实现的？
+
+`instanceof`操作符，判断一个对象是不是某个类型的实例
+
+内部逻辑：
+
+`instanceof` 运算符用来检测 `constructor.prototype` 是否存在于参数 `object` 的原型链上。
+
+
+# 继承相关问题
+
