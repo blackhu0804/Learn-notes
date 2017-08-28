@@ -129,7 +129,7 @@ console.log( Math.max.apply(null, arr) )  //12
 
 - 私有变量：（局部变量）当前作用域内有效的变量
 ```js
-function ClassA(){
+$function ClassA(){
     var a = 1; //私有变量，只有函数内部可以访问
     this.b = 2; //实例变量，只有实例可以访问
 }
@@ -145,3 +145,41 @@ console.log(classa.a);//undefined
 console.log(classa.b);// 2
 console.log(classa.c);//undefined
 ```
+
+
+## this的值到底是什么
+
+JS（ES5）里面有三种函数调用形式：
+
+
+
+```js
+func(p1, p2) 
+obj.child.method(p1, p2)
+func.call(context, p1, p2) // 先不讲 apply
+```
+
+前两种可以等价地变为 call 形式：
+
+```js
+func(p1, p2) 等价于
+func.call(undefined, p1, p2)
+
+obj.child.method(p1, p2) 等价于
+obj.child.method.call(obj.child, p1, p2)
+```
+
+
+
+至此我们的函数调用只有一种形式：
+
+```js
+func.call(context, p1, p2)
+```
+
+`this`，就是上面代码中的 context。
+
+> 如果你传的 context 就 null 或者 undefined，那么 window 对象就是默认的 context（严格模式下默认 context 是 undefined）
+
+
+
