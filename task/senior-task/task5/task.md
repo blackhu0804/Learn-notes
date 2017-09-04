@@ -36,3 +36,45 @@ package.json文件可以手工编写，也可以使用npm init命令自动生成
 /home/node_modules/bar
 /node_modules/bar
 ```     
+
+## 题目5： npm3与 npm2相比有什么改进？yarn和 npm 相比有什么优势? 
+
+- npm3遇到新的包就把它放在第一级目录，后面如果遇到一级目录已经存在的包，会先判断版本，如果版本一样则忽略，否则会按照 npm2 的方式依次挂在依赖包目录下
+
+
+- 使用 npm 拉取依赖时，即使用的是相同的 package.json，在不同的设备上拉到的 packages 版本不一，这就可能为项目引入 bug。
+Yarn 有一个锁定文件 (lock file) 记录了被确切安装上的模块的版本号。每次只要新增了一个模块，Yarn 就会创建（或更新）yarn.lock 这个文件。这么做就保证了，每一次拉取同一个项目依赖时，使用的都是一样的模块版本。
+
+## 题目6： webpack是什么？和其他同类型工具比有什么优势？
+
+> webpack 是一个现代 JavaScript 应用程序的模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成少量的 bundle - 通常只有一个，由浏览器加载。
+
+- webpack是一个模块化加载器兼打包工具，它同时支持AMD、CMD等加载规范。
+- webpack支持两种依赖加载：同步和异步。同步的依赖会在编译时直接打包输出到目的文件中；异步的依赖会单独生成一个代码块，只有在浏览器中运行需要的时候才会异步加载该代码块。
+- webpack只能在本地处理JavaScript，但是加载器用于将其他资源转换为JavaScript
+- webpack具有丰富的插件系统。这允许您根据需要自定义webpack，并将普通的插件作为开放源代码分发
+- webpack有一个聪明的解析器，可以处理几乎每一个第三方库。
+
+## 题目7：npm script是什么？如何使用？
+
+npm 允许在`package.json`文件里面，使用scripts字段定义脚本命令。
+```js
+{
+  // ...
+  "scripts": {
+    "build": "node build.js"
+  }
+}
+```
+
+上面代码是`package.json`文件的一个片段，里面的`scripts`字段是一个对象。它的每一个属性，对应一段脚本。比如，`build`命令对应的脚本是`node build.js`。
+命令行下使用`npm run`命令，就可以执行这段脚本。
+```python
+$ npm run build
+# 等同于执行
+$ node build.js
+```
+
+
+## 题目8： 使用 webpack 替换 入门-任务15中模块化使用的 requriejs
+
