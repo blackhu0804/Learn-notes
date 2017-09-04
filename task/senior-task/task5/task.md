@@ -88,4 +88,6 @@ $ node build.js
 
 [实现代码](https://github.com/hu970804/Learn-notes/blob/master/task/senior-task/task5/gulp/gulpfile.js)
 
-## 
+## 题目10： 开发一个 node 命令行天气应用用于查询用户当前所在城市的天气，发布到 npm 上去。
+
+[源码](https://github.com/hu970804/Learn-notes/blob/master/task/senior-task/task5/weather/index.js)
