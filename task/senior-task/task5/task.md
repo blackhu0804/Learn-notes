@@ -84,3 +84,8 @@ $ node build.js
 
 ### Gulp：任务自动管理工具
 
+- 使用 gulp 实现图片压缩、CSS 压缩合并、JS 压缩合并
+
+[实现代码](https://github.com/hu970804/Learn-notes/blob/master/task/senior-task/task5/gulp/gulpfile.js)
+
+## 
