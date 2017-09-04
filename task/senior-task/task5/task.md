@@ -78,3 +78,9 @@ $ node build.js
 
 ## 题目8： 使用 webpack 替换 入门-任务15中模块化使用的 requriejs
 
+[源码](https://github.com/hu970804/Learn-notes/tree/master/task/senior-task/task5/webpack)
+
+## 题目9：gulp是什么？使用 gulp 实现图片压缩、CSS 压缩合并、JS 压缩合并
+
+### Gulp：任务自动管理工具
+
