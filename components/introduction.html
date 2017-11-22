@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的简历</title>
+    <style>
+        @font-face {
+            font-family: 'iconfont';
+            /* project id 355378 */
+            src: url('//at.alicdn.com/t/font_4xde0ovhuyzumcxr.eot');
+            src: url('//at.alicdn.com/t/font_4xde0ovhuyzumcxr.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_4xde0ovhuyzumcxr.woff') format('woff'),
+            url('//at.alicdn.com/t/font_4xde0ovhuyzumcxr.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_4xde0ovhuyzumcxr.svg#iconfont') format('svg');
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-size: 14px/1.5 Arial;
+            background-color: #eee;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        #ct {
+            width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px 30px;
+        }
+
+        .personal-info .name-area {
+            width: 50%;
+            float: left;
+        }
+
+        .personal-info .contact {
+            width: 50%;
+            float: left;
+        }
+
+        .personal-info .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            color: #fff;
+            background-color: #111;
+            position: relative;
+            font-size: 30px;
+            float: left;
+        }
+
+        .personal-info .avatar span {
+            position: absolute;
+        }
+
+        .personal-info .avatar span:first-child {
+            top: 40px;
+            left: 40px;
+        }
+
+        .personal-info .avatar span:last-child {
+            bottom: 40px;
+            right: 40px;
+        }
+
+        .personal-info .avatar::before {
+            position: absolute;
+            top: 80px;
+            left: 40px;
+            content: '';
+            display: inline-block;
+            width: 80px;
+            border-top: 2px solid #fff;
+            transform: rotate(-30deg);
+        }
+
+        .personal-info .name-area>h2 {
+            font-size: 40px;
+            margin-left: 180px;
+            margin-top: 20px;
+        }
+
+        .personal-info .name-area>p {
+            font-size: 18px;
+            margin-left: 180px;
+        }
+
+        .personal-info .contact {
+            width: 50%;
+        }
+
+        .personal-info .contact h3 {
+            font-size: 18px;
+            margin-bottom: 4px;
+            border-bottom: 3px solid black;
+        }
+
+        .personal-info .contact p {
+            line-height: 1.8;
+        }
+
+        .experience {
+            margin-top: 50px;
+        }
+
+        .content::before {
+            content: "";
+            display: block;
+            width: 8px;
+            height: 8px;
+            background-color: black;
+            border-radius: 4px;
+            position: relative;
+            left: -65px;
+            top: 28px;
+        }
+
+        .experience div:first-of-type,
+        .education div:first-of-type {
+            margin-top: 20px;
+        }
+
+        .experience .content {
+            padding: 0 0 30px 60px;
+            border-left: 2px solid black;
+        }
+
+        .education .content {
+            padding: 0 0 30px 60px;
+            border-left: 2px solid black;
+        }
+
+        .experience h3,
+        .education h3,
+        .footer h3 {
+            display: inline-block;
+            width: 300px;
+            margin-top: 30px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #aaa;
+        }
+
+        .content span:first-child {
+            font-size: 20px;
+            line-height: 50px;
+        }
+
+        .content span:nth-child(2) {
+            color: #aaa;
+        }
+
+        .content p {
+            line-height: 1.8;
+        }
+
+        .footer .activites {
+            width: 50%;
+            float: left;
+        }
+
+        .footer .skills {
+            width: 50%;
+            float: left;
+        }
+
+        .footer .activites .vol {
+            padding-left: 60px;
+        }
+
+        .footer .activites .vol span:first-child {
+            margin-left: -60px;
+        }
+
+        .footer .activites .vol span:nth-child(2) {
+            display: inline-block;
+            font-size: 18px;
+            margin: 15px 40px;
+        }
+
+        .footer .activites p {
+            line-height: 1.8;
+        }
+
+        .footer .skills .ability {
+            display: flex;
+            flex-direction: column;
+            width: 310px;
+            height: 200px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        .ability li {
+            margin-top: 40px;
+            display: list-item;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ct">
+        <div class="personal-info clearfix">
+            <div class="name-area">
+                <div class="avatar">
+                    <span>S</span>
+                    <span>Y</span>
+                </div>
+                <h2>宿雨</h2>
+                <p>应聘前端开发工程师</p>
+            </div>
+            <div class="contact">
+                <h3>联系方式</h3>
+                <p>
+                    <strong>地址：</strong>山东省烟台市</p>
+                <p>
+                    <strong>手机：</strong>1111111111</p>
+                <p>
+                    <strong>邮箱：</strong>812510003</p>
+                <p>
+                    <strong>QQ：</strong>812510003</p>
+            </div>
+        </div>
+        <div class="experience">
+            <h3>工作经历</h3>
+            <div class="content">
+                <span>百度/</span>
+                <span>2012-2014</span>
+                <p>百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍百度介绍</p>
+            </div>
+            <div class="content">
+                <span>阿里/</span>
+                <span>2014-2016</span>
+                <p>阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里阿里介绍阿里介绍阿里阿里介绍阿里介绍阿里阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍阿里介绍</p>
+            </div>
+            <div class="content">
+                <span>腾讯/</span>
+                <span>2016-2017</span>
+                <p>腾讯介绍腾讯介绍腾讯介绍腾讯介绍腾讯介绍腾介绍腾讯介绍腾讯介绍腾讯介绍腾讯介绍腾介绍腾讯介绍腾讯介绍腾讯介绍腾讯介绍腾介绍腾讯介绍腾讯介绍腾讯介绍腾讯介绍腾介绍腾讯介绍腾讯介绍腾讯介绍腾讯介绍腾介绍腾讯介绍腾讯介绍腾讯介绍腾讯介绍腾介绍腾讯介绍腾讯介绍腾讯介绍腾讯介绍腾讯介绍腾讯介绍腾讯介绍</p>
+            </div>
+        </div>
+        <div class="education">
+            <h3>教育经历</h3>
+            <div class="content">
+                <span>第二中学/</span>
+                <span>2012-2015</span>
+                <p>学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍</p>
+            </div>
+            <div class="content">
+                <span>鲁东大学/</span>
+                <span>2015-2019</span>
+                <p>学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍学校介绍</p>
+            </div>
+        </div>
+        <div class="footer clearfix">
+            <div class="activites">
+                <h3>社会经历</h3>
+                <div class="vol">
+                    <span class="iconfont">&#xe600;</span>
+                    <span>志愿者</span>
+                    <p>支援工作者。又名义工，是指一种助人、具有组织性及社会的公益活动。</p>
+                </div>
+                <div class="vol">
+                    <span class="iconfont">&#xe600;</span>
+                    <span>志愿者</span>
+                    <p>支援工作者。又名义工，是指一种助人、具有组织性及社会的公益活动。</p>
+                </div>
+            </div>
+            <div class="skills">
+                <h3>个人技能</h3>
+                <ul class="ability">
+                    <li>
+                        <span class="iconfont">&#xe600;</span>
+                        <span>HTML&CSS</span>
+                    </li>
+                    <li>
+                        <span class="iconfont">&#xe600;</span>
+                        <span>NODE.JS</span>
+                    </li>
+                    <li>
+                        <span class="iconfont">&#xe600;</span>
+                        <span>JAVASCRIPT</span>
+                    </li>
+                    <li>
+                        <span class="iconfont">&#xe600;</span>
+                        <span>JQUERT</span>
+                    </li>
+                    <li>
+                        <span class="iconfont">&#xe600;</span>
+                        <span>VUE</span>
+                    </li>
+                    <li>
+                        <span class="iconfont">&#xe600;</span>
+                        <span>REACT</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
